@@ -1,44 +1,33 @@
-;;; mode-compile.el ---  Smart command for compiling files
-;;                       according to major-mode.
-;;
-;;   Copyright (c) 1994 - 2006 heddy Boubaker C.E.N.A.
-;;
-;;   Author: Heddy Boubaker <heddy.Boubaker@cena.fr>
-;;   Maintainer: Heddy Boubaker <heddy.Boubaker@cena.fr>
-;;   Created: June 1994
-;;   Last modified: 2006/12/01 13:52:47
-;;   Version: 2.29
-;;   Keywords: compile, compilation, modes, languages
-;;   Tested for:
-;;     XEmacs (Lucid GNU Emacs) >= 19.10
-;;     Must work with FSF GNU Emacs > 19.31 ;-)
-;;     Do not work anymore for Emacses <= 18
-;;   Ftp access:
-;;    archive.cis.ohio-state.edu:pub/gnu/emacs/elisp-archive/misc/mode-compile.el.Z
-;;   WWW access:
-;;    <URL http://www.tls.cena.fr/~boubaker/Emacs/>
-;;
-;; LCD Archive Entry:
-;; mode-compile|Heddy Boubaker|boubaker@cena.fr|
-;; Smart command for compiling files according to major-mode and more.|
-;; 2003/04/01 13:52:47|2.28|~/misc/mode-compile.el.Z|
-;;
-;;; This file is NOT part of GNU Emacs but the same permissions apply.
-;;
-;; GNU Emacs is free software; you can redistribute  it and/or modify it under
-;; the terms  of  the GNU General   Public License as   published  by the Free
-;; Software Foundation;    either version 2,   or (at  your option)  any later
-;; version.
-;;
-;; GNU Emacs  is distributed in  the hope that it will  be useful, but WITHOUT
-;; ANY  WARRANTY; without  even the  implied   warranty of MERCHANTABILITY  or
-;; FITNESS  FOR A PARTICULAR PURPOSE.  See  the GNU General Public License for
-;; more details.
-;;
-;; You  should have received a  copy of the GNU  General  Public License along
-;; with GNU Emacs; see the  file COPYING.  If  not, write to the Free Software
-;; Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
-;;
+;;; mode-compile.el --- compile files according to major-mode
+
+;; Copyright (C) 1994-2006  Heddy Boubaker
+
+;; Author: Heddy Boubaker <heddy.Boubaker@cena.fr>
+;; Maintainer: wanted
+;; Created: 1994
+;; Version: 2.29.1
+;; Keywords: compile, compilation, modes, languages
+
+;; This file is not part of GNU Emacs.
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; This package needs a new maintainer.  Please contact the original author if
+;; you are interested.
+
 ;; @ Purpose:
 ;; ==========
 ;;
@@ -83,14 +72,6 @@
 ;;        ** reference to free variable efs-remote-shell-file-name
 ;;      This is perfectly normal ;-}. But if you know a way to avoid it let me
 ;;      know.
-;;
-;; @ Bug Reports:
-;; ==============
-;;
-;;   To   report a  bug  please  use function `mode-compile-submit-bug-report'
-;;   Please note that this bug-report facility uses Barry Warsaw's reporter.el
-;;   which is part of GNU Emacs v19 and bundled with many  other packages.  If
-;;   needed, you can obtain a copy of reporter.el at the elisp-archive.
 ;;
 ;; @ Documentation:
 ;; ================
@@ -226,38 +207,34 @@
 ;; @@  message-mode:
 ;;    Run `message-send'.
 ;;
-;; @ WhatsNew:
-;; ===========
-;;
-;;  Support for ruby-mode
-;;
 ;; @ Contributors/Helpers:
 ;; =======================
 ;;
-;;   Adrian Aichner <aichner@ecf.teradyne.com>
-;;   "William A. Perkins" <wa_perkins@pnl.gov>
-;;   Bin Mu <mubin@DerivaTech.COM>
-;;   Gael MARZIOU <Gael_Marziou@grenoble.hp.com>
-;;   Christian Motschke <motschke@prosun.first.gmd.de>
-;;   boris <boris@cs.rochester.edu>
-;;   Edward Hartnett <ejh@larry.gsfc.nasa.gov>.
-;;   Hartmut MANZ <manz@intes-stuttgart.de>.
-;;   Henry Guillaume <henryg@tusc.com.au>.
-;;   Ian Young <imy@wcl-rs.bham.ac.uk>
-;;   Ilya Zakharevich <ilya@math.ohio-state.edu>.
-;;   Kevin Broadey <KevinB@bartley.demon.co.uk>.
-;;   Lawrence R. Dodd <dodd@roebling.poly.edu>.
-;;   Martin Jost <asictest@ztivax.zfe.siemens.de>.
-;;   Michael Welsh Duggan <md5i+@andrew.cmu.edu>.
-;;   Rolf EBERT <rolf@gundog.lbl.gov>.
-;;   Scott Hofmann <scotth@visix.com>.
-;;   Stefan Schoef <Stefan.Schoef@arbi.informatik.uni-oldenburg.de>.
-;;   John W. Harwell <ccjohnh@showme.missouri.edu> - JWH.
-;;   Charles L.G. Comstock <dgtized@gmail.com> - CLGC
+;;  Adrian Aichner <aichner@ecf.teradyne.com>
+;;  Bin Mu <mubin@DerivaTech.COM>
+;;  Charles L.G. Comstock <dgtized@gmail.com>
+;;  Christian Motschke <motschke@prosun.first.gmd.de>
+;;  Edward Hartnett <ejh@larry.gsfc.nasa.gov>
+;;  Gael MARZIOU <Gael_Marziou@grenoble.hp.com>
+;;  Hartmut MANZ <manz@intes-stuttgart.de>
+;;  Henry Guillaume <henryg@tusc.com.au>
+;;  Ian Young <imy@wcl-rs.bham.ac.uk>
+;;  Ilya Zakharevich <ilya@math.ohio-state.edu>
+;;  John W. Harwell <ccjohnh@showme.missouri.edu>
+;;  Kevin Broadey <KevinB@bartley.demon.co.uk>
+;;  Lawrence R. Dodd <dodd@roebling.poly.edu>
+;;  Martin Jost <asictest@ztivax.zfe.siemens.de>
+;;  Michael Welsh Duggan <md5i+@andrew.cmu.edu>
+;;  Rolf EBERT <rolf@gundog.lbl.gov>
+;;  Scott Hofmann <scotth@visix.com>
+;;  Stefan Schoef <Stefan.Schoef@arbi.informatik.uni-oldenburg.de>
+;;  William A. Perkins <wa_perkins@pnl.gov>
+;;  boris <boris@cs.rochester.edu>
 ;;
 ;; @ ToDo:
 ;; =======
 ;;
+;;   Find a new maintainer.
 ;;   Extending this to some others programming languages (modes).
 ;;   Writting an Info documentation.
 ;;   Contributors are greatly accepted (send me diffs and don't forget to
@@ -265,60 +242,30 @@
 ;;   Maybe Using ange-ftp parse .netrc utilities for remote host and
 ;;   user infos.
 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; Code:
 
 ;; @ Requirements ;;;
 
-;; mode-compile is not a replacement for compile
-;; it is just a layer above it.
-(require 'compile)
-;;; For Emacs-Lisp files compilations
-(require 'byte-compile "bytecomp")
-;;; For easy macros
-(require 'backquote)
 (require 'cl)
-(load-library "cl-macs")
-;; Pretty print elisp
-(require 'pp)
-;;; Setting obsolete vars
-(eval-and-compile
-  (condition-case ()
-      (require 'obsolete)
-    (error nil))
-  (if (and (featurep 'obsolete) (fboundp 'define-obsolete-variable-alias))
-      nil ;; We've got what we needed
-    (defmacro define-obsolete-variable-alias (old new)
-      (` (progn (defalias (, old) (, new))
-                (put (, old) 'byte-obsolete-variable (, new)))
-         ))))
-;;; For using custom - stolen from w3-cus.el -
-(eval-and-compile
-  (condition-case ()
-      (require 'custom)
-    (error nil))
-  (if (and (featurep 'custom) (fboundp 'custom-declare-variable))
-      nil ;; We've got what we needed
-    ;; We have the old custom-library, hack around it!
-    (defmacro defgroup (&rest args)
-      nil)
-    (defmacro defcustom (var value doc &rest args)
-      (` (defvar (, var) (, value) (, doc))))))
+(require 'compile)
 
-;; Custom groups
+;; @ Custom groups ;;;
+
 (defgroup compilation nil
   "Compilations from within Emacs variables."
-  :link '(url-link :tag "Author's Emacs Page"
-                   "http://www.tls.cena.fr/~boubaker/Emacs/")
   :group 'tools
   :group 'development)
+
 (defgroup compilation-lang nil
   "Language specific compilation options."
   :group 'languages
   :group 'compilation)
+
 (defgroup compilation-script nil
   "Scripts compilation options."
   :group 'compilation)
+
 (defgroup compilation-elisp nil
   "Emacs developpement compilation options."
   :group 'lisp
@@ -2680,8 +2627,6 @@ Bound on \\[mode-compile-kill]."
                mode-name))))
 
 (provide 'mode-compile-kill)
-
-
 
 ;;; Local variables:
 ;;; outline-regexp: ";; @+"
